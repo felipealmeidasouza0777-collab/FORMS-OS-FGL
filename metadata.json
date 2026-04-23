@@ -1,0 +1,6 @@
+{
+  "name": "FGL - Agendamento de Visita Técnica",
+  "description": "Sistema de agendamento de serviços e visitas técnicas para a FGL, com integração de CEP e confirmação automática por e-mail.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
