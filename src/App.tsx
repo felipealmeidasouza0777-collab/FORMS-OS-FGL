@@ -147,17 +147,17 @@ export default function FGLServicePortal() {
     <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-900 antialiased selection:bg-orange-100">
       {/* Header Premium */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-center">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#FF6600] rounded-xl flex items-center justify-center shadow-lg shadow-orange-200">
-              <ShieldCheck className="text-white w-6 h-6" />
-            </div>
-            <h1 className="font-black text-xl tracking-tighter uppercase italic">FGL <span className="text-[#FF6600]">Brasil</span></h1>
-          </div>
-          <div className="hidden md:flex items-center gap-4">
-            <div className="flex flex-col items-end">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Suporte 24h</span>
-              <span className="text-sm font-bold text-slate-700">0800 750 5500</span>
+            <div className="h-12 flex items-center justify-center">
+              <img 
+                src="https://fgl-rastreamento.web.app/static/media/logo.f076c483.png" 
+                alt="FGL Rastreamento" 
+                className="h-full object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://placehold.co/200x60/FF6600/white?text=FGL+RASTREADORES';
+                }}
+              />
             </div>
           </div>
         </div>
@@ -222,7 +222,7 @@ export default function FGLServicePortal() {
                       <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 shadow-inner"><User size={28} /></div>
                       <div>
                         <h2 className="font-black text-xl uppercase italic tracking-tight">Dados do Titular</h2>
-                        <p className="text-sm text-slate-500 font-medium">Informações obrigatórias para faturamento.</p>
+                        <p className="text-sm text-slate-500 font-medium">Informações obrigatórias para o agendamento.</p>
                       </div>
                     </div>
                     <div className="grid md:grid-cols-2 gap-x-10 gap-y-8">
@@ -245,20 +245,19 @@ export default function FGLServicePortal() {
                     </div>
                     <div className="max-w-md mx-auto space-y-10">
                       {/* COMPONENTE PLACA MERCOSUL REALISTA */}
-                      <div className="w-full aspect-[3.1/1] bg-white border-[4px] border-slate-800 rounded-xl shadow-2xl overflow-hidden relative">
-                        <div className="w-full h-[22%] bg-[#003399] flex items-center justify-between px-6">
-                           <span className="text-white text-[11px] font-black tracking-widest">BRASIL</span>
+                      <div className="w-full max-w-[320px] mx-auto aspect-[3.1/1] bg-white border-[4px] border-slate-800 rounded-lg shadow-2xl overflow-hidden relative">
+                        <div className="w-full h-[22%] bg-[#003399] flex items-center justify-between px-4">
+                           <span className="text-white text-[9px] font-black tracking-widest">BRASIL</span>
                            <div className="flex items-center gap-1 opacity-80">
-                             <div className="w-4 h-2.5 bg-white/20 rounded-sm" />
-                             <div className="w-4 h-2.5 bg-white/20 rounded-sm" />
+                             <div className="w-3 h-2 bg-white/20 rounded-sm" />
+                             <div className="w-3 h-2 bg-white/20 rounded-sm" />
                            </div>
                         </div>
-                        <div className="h-[78%] flex items-center justify-center bg-[#F1F1F1]">
-                           <span className="text-6xl font-black tracking-[0.2em] text-slate-900 uppercase font-mono">
+                        <div className="h-[78%] flex items-center justify-center bg-[#F1F1F1] px-2">
+                           <span className="text-4xl sm:text-5xl font-black tracking-[0.1em] text-slate-900 uppercase font-mono break-all text-center leading-none">
                              {formData.plate || 'ABC1D23'}
                            </span>
                         </div>
-                        <div className="absolute bottom-1 right-3 opacity-10 text-[8px] font-black italic select-none">FGL SECURITY SYSTEM</div>
                       </div>
 
                       <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
@@ -298,11 +297,11 @@ export default function FGLServicePortal() {
                     </div>
 
                     {/* Terms & Conditions UI */}
-                    <div className="mt-12 p-6 bg-slate-50 rounded-2xl border-2 border-slate-100/50 flex items-start gap-4 cursor-pointer hover:border-orange-200 transition-all" onClick={() => setAcceptedTerms(!acceptedTerms)}>
-                      <div className={`mt-0.5 w-6 h-6 rounded-lg flex items-center justify-center border-2 transition-all ${acceptedTerms ? 'bg-[#FF6600] border-[#FF6600]' : 'bg-white border-slate-200'}`}>
-                        {acceptedTerms && <CheckCircle2 className="text-white w-4 h-4" />}
+                    <div className="mt-12 p-8 bg-slate-50 rounded-lg border-2 border-slate-100/50 flex items-center gap-6 cursor-pointer hover:border-orange-200 transition-all shadow-sm" onClick={() => setAcceptedTerms(!acceptedTerms)}>
+                      <div className={`shrink-0 w-10 h-10 rounded-md flex items-center justify-center border-[3px] transition-all ${acceptedTerms ? 'bg-[#FF6600] border-[#FF6600]' : 'bg-white border-slate-200'}`}>
+                        {acceptedTerms && <CheckCircle2 className="text-white w-6 h-6" />}
                       </div>
-                      <p className="text-xs text-slate-500 leading-relaxed font-bold">
+                      <p className="text-sm text-slate-600 leading-tight font-bold">
                         Declaro que todas as informações acima são verdadeiras e estou ciente de que dados incorretos podem atrasar o agendamento da ordem de serviço técnico.
                       </p>
                     </div>
@@ -350,13 +349,12 @@ export default function FGLServicePortal() {
         </div>
       </main>
       
-      <footer className="text-center py-12 px-6">
-        <div className="flex items-center justify-center gap-3 opacity-20 mb-4">
-           <Wifi size={14} />
-           <div className="w-4 h-0.5 bg-slate-400" />
-           <Hash size={14} />
+      <footer className="bg-[#FF6600] py-4 px-6 mt-auto">
+        <div className="max-w-4xl mx-auto flex flex-col items-center justify-center">
+          <div className="flex items-center justify-center gap-3 opacity-30 text-white">
+             <div className="w-8 h-1 bg-white rounded-full" />
+          </div>
         </div>
-        <p className="text-[9px] font-black text-slate-300 uppercase tracking-[0.4em]">FGL Rastreamento & Monitoramento © Soluções em Telemetria Avançada</p>
       </footer>
     </div>
   );
